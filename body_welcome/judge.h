@@ -1,7 +1,9 @@
-
+#include <Adafruit_NeoPixel.h>
 #include "audio.h"
 #define body_pin 4
 #define body_pin2 6
+
+Adafruit_NeoPixel strip = Adafruit_NeoPixel(12, PIN, NEO_GRB + NEO_KHZ800);
 
 boolean FLAG_1 = 0;
 boolean FLAG_2 = 0;
@@ -35,5 +37,13 @@ void judge()
     Serial.println("GOING OUT");
     FLAG_2 = 0;
     delay(1300);   //2000
+  }
+}
+
+void colorWipe(uint32_t c) {
+  for (uint16_t i = 0; i < strip.numPixels(); i++)
+  {
+    strip.setPixelColor(i, c);
+    strip.show();
   }
 }
