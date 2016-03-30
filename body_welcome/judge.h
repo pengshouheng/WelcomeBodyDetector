@@ -1,5 +1,7 @@
+#include "arduino.h"
 #include <Adafruit_NeoPixel.h>
 #include "audio.h"
+
 #define body_pin 4
 #define body_pin2 6
 
