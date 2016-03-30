@@ -1,26 +1,22 @@
 #include "audio.h"
 #include "key.h"
-
+#include "judge.h"
 #include <Adafruit_NeoPixel.h>
 #define PIN A0
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(12, PIN, NEO_GRB + NEO_KHZ800);
 
 //#include <SoftwareSerial.h>
-
 uint32_t color[9] =
 {
   strip.Color(0, 0, 0), strip.Color(255, 0, 0), strip.Color(248, 141, 30), strip.Color(255, 255, 0), strip.Color(0, 255, 0), strip.Color(0, 127, 255), strip.Color(0, 0, 255), strip.Color(139, 0, 255), strip.Color(255, 255, 255)
 };
 
-#define body_pin 4
-#define body_pin2 6
 int i = 1;
 int music_vol = 28; //初始音量0~30
 
 boolean play_pause;
 boolean play_stop;
-boolean FLAG_1 = 0;
-boolean FLAG_2 = 0;
+
 void setup() {
   // initialize serial:
   Serial.begin(9600);
@@ -49,14 +45,6 @@ void loop() {
     FLAG_1 = 0;
     FLAG_2 = 0;
    }
-}
-
-void colorWipe(uint32_t c) {
-  for (uint16_t i = 0; i < strip.numPixels(); i++)
-  {
-    strip.setPixelColor(i, c);
-    strip.show();
-  }
 }
 
 
